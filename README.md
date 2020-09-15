@@ -1,2 +1,2 @@
 # BlockChain-Authenticator-Disease-Predictor-Recommender-System
-## Please ignore the name rabadiom, thank you
+# Rabadiom is the name of the app, all the code is in that folder
