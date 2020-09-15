@@ -1,0 +1,114 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div id="map"></div>
+  <script>
+    function initMap(){
+      // Map options
+      var options = {
+        zoom:11,
+        center:{lat:{{ lat }},lng:{{ lng }}}
+      }
+
+      // New map
+      var map = new google.maps.Map(document.getElementById('map'), options);
+
+    var markers = [
+        {
+          coords:{ lat: {{ lat }}, lng:{{ lng }} },
+          content:'<h5>{{ current_user }}</h5>'
+        },
+        {
+          coords:{ lat: {{ doctors[0]["lat"] }}, lng:{{ doctors[0]["lng"] }} },
+          iconImage:'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
+          content:'<h5>{{ doctors[0]["Name"] }} <br>Rate: {{ doctors[0]["Rate"] }} <br>Rating: {{ doctors[0]["Rating"] }}</h5>'
+        },
+        {
+          coords:{ lat: {{ doctors[1]["lat"] }}, lng:{{ doctors[1]["lng"] }} },
+          iconImage:'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
+          content:'<h5>{{ doctors[1]["Name"] }} <br>Rate: {{ doctors[1]["Rate"] }} <br>Rating: {{ doctors[1]["Rating"] }}</h5>'
+        },
+        {
+          coords:{ lat: {{ doctors[2]["lat"] }}, lng:{{ doctors[2]["lng"] }} },
+          iconImage:'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
+          content:'<h5>{{ doctors[2]["Name"] }} <br>Rate: {{ doctors[2]["Rate"] }} <br>Rating: {{ doctors[2]["Rating"] }}</h5>'
+        },
+        {
+          coords:{ lat: {{ doctors[3]["lat"] }}, lng:{{ doctors[3]["lng"] }} },
+          iconImage:'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
+          content:'<h5>{{ doctors[3]["Name"] }} <br>Rate: {{ doctors[3]["Rate"] }} <br>Rating: {{ doctors[3]["Rating"] }}</h5>'
+        },
+        {
+          coords:{ lat: {{ doctors[4]["lat"] }}, lng:{{ doctors[4]["lng"] }} },
+          iconImage:'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
+          content:'<h5>{{ doctors[4]["Name"] }} <br>Rate: {{ doctors[4]["Rate"] }} <br>Rating: {{ doctors[4]["Rating"] }}</h5>'
+        }
+        ];
+
+        for(var i = 0;i < markers.length;i++){
+        // Add marker
+        addMarker(markers[i]);
+      }
+
+      // Add Marker Function
+      function addMarker(props){
+        var marker = new google.maps.Marker({
+          position:props.coords,
+          map:map,
+          //icon:props.iconImage
+        });
+
+        // Check for customicon
+        if(props.iconImage){
+          // Set icon image
+          marker.setIcon(props.iconImage);
+        }
+
+        // Check content
+        if(props.content){
+          var infoWindow = new google.maps.InfoWindow({
+            content:props.content
+          });
+
+          marker.addListener('click', function(){
+            infoWindow.open(map, marker);
+          });
+        }
+      }
+    }
+  </script>
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCukArbjvhnW2JjGBedKNUR5fBfbY2KzWg&callback=initMap">
+    </script>
+    <br>
+    <br>
+                <div class="container">
+                  <h2>Doctor Table</h2>
+                  <p>Table which shows the doctors recommended</p>            
+                  <table class="table table-striped" style="background: #2F4F4F;color: #FFFACD">
+                    <thead>
+                      <tr>
+                        <th>Name</th>
+                        <th>Rate</th>
+                        <th>Rating</th>
+                        {% if doctors[0]["distance"] %}
+                          <th>Distance</th>
+                        {% endif %}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for d in doctors %}
+                      <tr>
+                        <td> {{ d["Name"] }} </td>
+                        <td> {{ d["Rate"] }} </td>
+                        <td> {{ d["Rating"] }} </td>
+                        {% if d["distance"] %}
+                          <td>{{ d["distance"] }}</td>
+                        {% endif %}
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                </div>    
+
+{% endblock content %}

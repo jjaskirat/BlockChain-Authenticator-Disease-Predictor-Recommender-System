@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+{% block content %}
+    {% if posts %}
+    <h1 class="mb-3">EHR's Of {{ user.username }} ({{ posts.total }})</h1>
+    {% for post in doctors %}
+        <a class="article-title" href="{{ url_for('posts.post', post_id=post[0].id) }}">
+        <article class="media content-section" style="background: #FFFACD">
+          <img class="rounded-circle article-img" src="{{ url_for('static', filename='profile_pics/' + post[0].user_ehr.image_file) }}">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="{{ url_for('users.user_posts', username=post[0].user_ehr.username) }}">{{ post[0].user_ehr.username }}</a>
+              <small class="text-muted">{{ post[0].date_posted.strftime('%Y-%m-%d') }}</small>
+            </div>
+            <h2>Doctor: <span class="article-title">{{ post[1].username }}</span></h2>
+            <p class="article-content">Diseases: {{ post[0].diseases1 }}{{ post[0].diseases2 }}{{ post[0].diseases3 }}</p>
+          </div>
+        </article>
+      </a>
+    {% endfor %}
+    
+    {% else %}
+    <div class="jumbotron jumbotron-fluid">
+      <h1>{{ current_user.username }} has no posts</h1>
+    </div>
+    {% endif %}
+{% endblock content %}
+
+<!-- <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="{{ url_for('users.user_posts', username=post.author.username) }}">{{ post.author.username }}</a>
+              <small class="text-muted">{{ post.date_posted.strftime('%Y-%m-%d') }}</small>
+            </div>
+            <h2><a class="article-title" href="{{ url_for('posts.post', post_id=post.id) }}">{{ post.title }}</a></h2>
+            <p class="article-content">{{ post.content }}</p>
+          </div>

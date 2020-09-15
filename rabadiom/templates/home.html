@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="jumbotron jumbotron-fluid text-center" style="background: #FFFACD">
+      <h1>Patient Home Page</h1>
+      <h3>Welcome To Patient Home Page</h3>
+    </div>
+    <div class="jumbotron jumbotron-fluid" style="background: #FFFACD">
+      <h4>Are you sick and tired of all the hospitals which ask for all your details again and again?</h4>
+      <h4>Does every hospital or doctor ask for your records and extract money by giving fake results or tests!?</h4>
+      <h4>Do you want all your records to be encrypted and stored securely?</h4>
+      <h4>Then you are at the right place</h4>
+      <br>
+      <button class = "btn" style="background:   #2F4F4F"><a class="nav-item nav-link" href="{{ url_for('predictor.disease_predictor') }}" style="color: #FFFACD">Disease Predictor</a></button>
+      <button class="btn" style="background:   #2F4F4F"><a class="nav-item nav-link" href="{{ url_for('recommend.doctor_recommender') }}" style="color: #FFFACD">Doctor Recommender</a></button>
+    </div>
+{% endblock content %}

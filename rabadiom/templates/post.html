@@ -1,0 +1,87 @@
+{% extends "layout.html" %}
+{% block content %}
+  <article class="media content-section" style="background: #FFFACD">
+    <img class="rounded-circle article-img" src="{{ url_for('static', filename='profile_pics/' + post.user_ehr.image_file) }}">
+    <div class="media-body">
+      <div class="article-metadata">
+        <a class="mr-2" href="{{ url_for('users.user_posts', username=post.user_ehr.username) }}">{{ post.user_ehr.username }}</a>
+        <small class="text-muted">{{ post.date_posted.strftime('%Y-%m-%d') }}</small>
+        {% if post.user_ehr == current_user %}
+          <div>
+            <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{{ url_for('posts.update_post', post_id=post.id) }}">Update</a>
+            <button type="button" class="btn btn-danger btn-sm m-1" data-toggle="modal" data-target="#deleteModal">Delete</button>
+          </div>
+        {% endif %}
+      </div>
+      <h1 class="article-title">Doctor: {{ doctor.username }}</h1>
+      <h2 class="article-title">Disease 1: {{ post.diseases1 }}</h2>
+      {% if post.diseases2 %}
+      <h2 class="article-title">Disease 2: {{ post.diseases2 }}</h2>
+      {% endif %}
+      {% if post.diseases3 %}
+      <h2 class="article-title">Disease 3: {{ post.diseases3 }}</h2>
+      {% endif %}
+      {% if post.test_or_med1 %}
+      <h2 class="article-title">Test or Medication 1: {{ post.test_or_med1 }}</h2>
+      {% endif %}
+      {% if post.casuses1 %}
+      <h2 class="article-title">Cause 1: {{ post.causes1 }}</h2>
+      {% endif %}
+      {% if post.test_or_med2 %}
+      <h2 class="article-title">Test or Medication 2: {{ post.test_or_med2 }}</h2>
+      {% endif %}
+      {% if post.casuses2 %}
+      <h2 class="article-title">Cause 2: {{ post.causes2 }}</h2>
+      {% endif %}
+      {% if post.test_or_med3 %}
+      <h2 class="article-title">Test or Medication 3: {{ post.test_or_med3 }}</h2>
+      {% endif %}
+      {% if post.casuses3 %}
+      <h2 class="article-title">Cause 3: {{ post.causes3 }}</h2>
+      {% endif %}
+      {% if post.test_or_med4 %}
+      <h2 class="article-title">Test or Medication 4: {{ post.test_or_med4 }}</h2>
+      {% endif %}
+      {% if post.casuses4 %}
+      <h2 class="article-title">Cause 4: {{ post.causes4 }}</h2>
+      {% endif %}
+      {% if post.test_or_med5 %}
+      <h2 class="article-title">Test or Medication 5: {{ post.test_or_med5 }}</h2>
+      {% endif %}
+      {% if post.casuses5%}
+      <h2 class="article-title">Cause 5: {{ post.causes5 }}</h2>
+      {% endif %}
+      {% if post.test_or_med6 %}
+      <h2 class="article-title">Test or Medication 6: {{ post.test_or_med6 }}</h2>
+      {% endif %}
+      {% if post.casuses6 %}
+      <h2 class="article-title">Cause 6: {{ post.causes6 }}</h2>
+      {% endif %}
+      {% if post.test_or_med7 %}
+      <h2 class="article-title">Test or Medication 7: {{ post.test_or_med7 }}</h2>
+      {% endif %}
+      {% if post.casuses7%}
+      <h2 class="article-title">Cause 7: {{ post.causes7 }}</h2>
+      {% endif %}
+    </div>
+  </article>
+  <!-- Modal -->
+  <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="deleteModalLabel">Delete Post?</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <form action="{{ url_for('posts.delete_post', post_id=post.id) }}" method="POST">
+            <input class="btn btn-danger" type="submit" value="Delete">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock content %}

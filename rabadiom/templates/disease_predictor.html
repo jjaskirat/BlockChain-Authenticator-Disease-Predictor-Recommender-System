@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="jumbotron jumbotron-fluid text-center" style="background: #FFFACD">
+      <h1>Disease Predictor</h1>
+    </div>
+    <div class="content-section" style="background: #2F4F4F;color: #FFFACD">
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Enter Your Symptoms Below</legend>
+                <div class="form-group">
+                    {{ form.symptom1.label(class="form-control-label") }}
+                    {{ form.symptom1(class="form-control form-control-lg") }}
+
+                    {{ form.symptom2.label(class="form-control-label") }}
+                    {{ form.symptom2(class="form-control form-control-lg") }}
+
+                    {{ form.symptom3.label(class="form-control-label") }}
+                    {{ form.symptom3(class="form-control form-control-lg") }}
+
+                    {{ form.symptom4.label(class="form-control-label") }}
+                    {{ form.symptom4(class="form-control form-control-lg") }}
+
+                    {{ form.symptom5.label(class="form-control-label") }}
+                    {{ form.symptom5(class="form-control form-control-lg") }}
+
+                    {{ form.symptom6.label(class="form-control-label") }}
+                    {{ form.symptom6(class="form-control form-control-lg") }}
+                </div>
+            </fieldset>
+            <div class="form-group">
+                {{ form.submit(class="btn btn-outline-info") }}
+            </div>
+        </form>
+    </div>
+{% endblock content %}

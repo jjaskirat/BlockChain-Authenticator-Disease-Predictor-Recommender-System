@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="jumbotron jumbotron-fluid text-center" style="background: #FFFACD">
+      <h1>Doctor Recommender Page</h1>
+    </div>
+    <div class="content-section" style="background: #2F4F4F;color: #FFFACD">
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Fill The Recommender Form</legend>
+                <div class="form-group">
+                    {{ form.speciality.label(class="form-control-label") }}
+
+                    {{ form.speciality(class="form-control form-control-lg") }}
+                </div>
+                <div class="form-group">
+                    {{ form.filter.label(class="form-control-label") }}
+                  
+                    {{ form.filter(class="form-control form-control-lg") }}
+                </div>
+                <div class="form-group">
+                    {{ form.address.label(class="form-control-label") }}
+                  
+                    {{ form.address(class="form-control form-control-lg") }}
+                </div>
+            </fieldset>
+            <div class="form-group">
+                {{ form.submit(class="btn btn-outline-info") }}
+            </div>
+        </form>
+    </div>
+{% endblock content %}

@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+{% block content %}
+                {% if diseases %}
+                <div class="container">
+                  <h2>Disease Table</h2>
+                  <p>Table which shows the diseases predicted</p>            
+                  <table class="table table-striped" style="background: #2F4F4F;color: #FFFACD">
+                    <thead>
+                      <tr>
+                        <th>Disease</th>
+                        <th>Algorith Used</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for d in diseases %}
+                      <tr>
+                        <td> {{ d[0] }} </td>
+                        <td> {{ d[1] }} </td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                </div>    
+                {% else %}
+                <div class="jumbotron jumbotron-fluid">
+                    <h1>No Symptom Entered</h1>
+                    <h3>Please Go Back And Enter Some Symptoms</h3>
+                </div>
+                {% endif %}
+                <div>
+      <button class="btn" style="background:   #2F4F4F"><a class="nav-item nav-link" href="{{ url_for('recommend.doctor_recommender') }}" style="color: #FFFACD">Doctor Recommender</a></button>
+    </div>
+{% endblock content %}

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+
+    {% if title %}
+        <title>eClinic - {{ title }}</title>
+    {% else %}
+        <title>eClinic</title>
+    {% endif %}
+</head>
+<body class="text-steel" style="background: #FFFACD">
+    <header class="site-header">
+      <nav class="navbar navbar-expand-md fixed-top" style="background:   #2F4F4F">
+        <div class="container">
+          <a class="navbar-brand mr-4" href="{{ url_for('main.home') }}"><span style="color: red">e+<span><span style="color: white">Clinic</span></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarToggle">
+            <div class="navbar-nav mr-auto">
+              <a class="nav-item nav-link" href="{{ url_for('doc_main.home') }}" style="color: #FFFACD">Home</a>
+              <a class="nav-item nav-link" href="{{ url_for('doc_main.about') }}" style="color: #FFFACD">About</a>
+            </div>
+            <!-- Navbar Right Side -->
+            <div class="navbar-nav">
+              {% if current_user.is_authenticated %}
+                <a class="nav-item nav-link" href="{{ url_for('posts.new_post') }}" style="color: #FFFACD">New EHR</a>
+                <a class="nav-item nav-link" href="{{ url_for('doctor.account') }}" style="color: #FFFACD">Account</a>
+                <a class="nav-item nav-link" href="{{ url_for('doctor.logout') }}" style="color: #FFFACD">Logout</a>
+              {% else %}
+                <a class="nav-item nav-link" href="{{ url_for('main.home') }}" style="color: #FFFACD">Switch To Patient's Page</a>
+                <a class="nav-item nav-link" href="{{ url_for('doctor.login') }}" style="color: #FFFACD">Login</a>
+                <a class="nav-item nav-link" href="{{ url_for('doctor.register') }}" style="color: #FFFACD">Register</a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main role="main" class="container">
+      <div class="row">
+        <div class="col-md-8">
+          {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+              {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">
+                  {{ message }}
+                </div>
+              {% endfor %}
+            {% endif %}
+          {% endwith %}
+          {% block content %}{% endblock %}
+          <div class="jumbotron jumbotron-fluid" style="background: #FFFACD">
+            <h2 class="text-center">WELCOME TO THE FUTURE</h2>
+            <h1 class="text-center" style="text-shadow: 3px 2px grey"><span style="color: red;font-size: 60px">e</span><span style="color: red;font-size: 50px">+</span><span style="color: #2F4F4F">CLINIC </span></h1>
+          </div>
+        </div>
+        {% if current_user.is_authenticated %}
+          <div class="col-md-4">
+            <div class="content-section" style="background: #2F4F4F">
+              <h3 style="color: #FFFACD">Currently Logged In as A Doctor</h3>
+              <p class='text-muted'>Your General Information.
+                <ul class="list-group">
+                  <li class="list-group-item" style="background: #FFFACD">Name: {{ current_user.name }}</li>
+                  <li class="list-group-item" style="background: #FFFACD">Username: {{ current_user.username }}</li>
+                  <li class="list-group-item" style="background: #FFFACD">Email: {{ current_user.email }}</li>
+                </ul>
+              </p>
+            </div>
+          </div>
+        {% else %}
+          <div class="col-md-4">
+            <div class="content-section" style="background: #2F4F4F">
+              <h3 style="color: #FFFACD">Currently not Logged In</h3>
+              <p class='text-muted'>Login to get all the benefits of our App.
+                <ul class="list-group">
+                  <li class="list-group-item" style="background: #FFFACD">Saving EHRs on a BlockChain</li>
+                  <li class="list-group-item" style="background: #FFFACD">Predicting Diseases</li>
+                  <li class="list-group-item" style="background: #FFFACD">High Level Security</li>
+                  <li class="list-group-item" style="background: #FFFACD">Doctor Reccomendations</li>
+                </ul>
+              </p>
+            </div>
+          </div>
+        {% endif %}
+      </div>
+    </main>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

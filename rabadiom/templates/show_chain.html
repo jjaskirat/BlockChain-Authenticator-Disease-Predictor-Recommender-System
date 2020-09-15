@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block content %}
+                {% if chain %}
+                <div class="container">
+                  {% for c in chain %}
+                    <div style="background: #FFFACD;border: 2px solid #2F4F4F;margin: 2px;padding: 10px">
+                      Doctor :{{ c.ToDict()["transaction"]["doctor"] }}
+                      <br>
+                      Patient :{{ c.ToDict()["transaction"]["patient"] }}
+                      <br>
+                      EHR :{{ c.ToDict()["transaction"]["ehr"] }}
+                      <br>
+                      Prev Hash :{{ c.ToDict()["prev_hash"] }}
+                      <br>
+                      Hash :{{ c.ToDict()["hash"] }}
+                    </div>
+                    <br>
+                  {% endfor %}
+                </div>
+                {% else %}
+                <div class="jumbotron jumbotron-fluid">
+                    <h1>No Chain</h1>
+                    <h3>An Error May Have Occurred</h3>
+                </div>
+                {% endif %}
+{% endblock content %}
