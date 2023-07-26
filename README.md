@@ -1,16 +1,16 @@
 # BlockChain-Authenticator-Disease-Predictor-Recommender-System
 
 ## Screenshots
-- Fig a2.11: <a href="#a2_1">My EHR's</a>
-- Fig a2.11: <a href="#a2_2">My EHR's</a>
-- Fig a2.11: <a href="#a2_3">My EHR's</a>
-- Fig a2.11: <a href="#a2_4">My EHR's</a>
-- Fig a2.11: <a href="#a2_5">My EHR's</a>
-- Fig a2.11: <a href="#a2_6">My EHR's</a>
-- Fig a2.11: <a href="#a2_7">My EHR's</a>
-- Fig a2.11: <a href="#a2_8">My EHR's</a>
-- Fig a2.11: <a href="#a2_9">My EHR's</a>
-- Fig a2.11: <a href="#a2_10">My EHR's</a>
+- Fig a2.1: <a href="#a2_1">My EHR's</a>
+- Fig a2.2: <a href="#a2_2">My EHR's</a>
+- Fig a2.3: <a href="#a2_3">My EHR's</a>
+- Fig a2.4: <a href="#a2_4">My EHR's</a>
+- Fig a2.5: <a href="#a2_5">My EHR's</a>
+- Fig a2.6: <a href="#a2_6">My EHR's</a>
+- Fig a2.7: <a href="#a2_7">My EHR's</a>
+- Fig a2.8: <a href="#a2_8">My EHR's</a>
+- Fig a2.9: <a href="#a2_9">My EHR's</a>
+- Fig a2.10: <a href="#a2_10">My EHR's</a>
 - Fig a2.11: <a href="#a2_11">My EHR's</a>
 
 <a id="a2_1"></a>
