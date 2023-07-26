@@ -1,7 +1,7 @@
 # BlockChain-Authenticator-Disease-Predictor-Recommender-System
 
 ## Screenshots
-- Fig a2.11: <a href="#a2_11">My EHR's</a>
+- Fig a2.11: <a href="a2_11">My EHR's</a>
 
 ![image](https://github.com/jjaskirat/BlockChain-Authenticator-Disease-Predictor-Recommender-System/assets/22426543/160ddbf4-9dba-42bd-82d2-bacf72964a7f)
 
