@@ -24,4 +24,5 @@
 
 ![image](https://github.com/jjaskirat/BlockChain-Authenticator-Disease-Predictor-Recommender-System/assets/22426543/3158db52-8eb9-4fc0-acdf-864c85259b07)
 
-![a2_11][a2_11](https://github.com/jjaskirat/BlockChain-Authenticator-Disease-Predictor-Recommender-System/assets/22426543/9144d016-f634-473f-be65-096805a65d45)
+<a id="a2_11"></a>
+![a2_11](https://github.com/jjaskirat/BlockChain-Authenticator-Disease-Predictor-Recommender-System/assets/22426543/9144d016-f634-473f-be65-096805a65d45)
